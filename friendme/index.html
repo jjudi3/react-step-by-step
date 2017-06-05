@@ -54,7 +54,8 @@
     function UserName() {
       var nameStyle = {
         fontSize: 24,
-        fontFamily: "Arial, Helvetica, sans-serif"
+        fontFamily: "Arial, Helvetica, sans-serif",
+        margin: 20
       }
       return(
         <h1 style={nameStyle}>Profile Name</h1>
@@ -74,13 +75,13 @@
 
   function Email() {
     return(
-        <i className="fa fa-envelope-o like-button" style={socialStyle}/>
+      <i className="fa fa-envelope-o like-button" style={socialStyle}/>
     );
   }
 
   function News() {
     return(
-      <i className="fa fa-heart like-button" style={socialStyle}/>
+      <i class="fa fa-newspaper-o" aria-hidden="true"></i>
     );
   }
 
@@ -96,8 +97,6 @@
 
         ReactDOM.render(
         <div>
-          <Friendly />
-          <Friendly />
           <Friendly />
         </div>,
         document.getElementById("app") );

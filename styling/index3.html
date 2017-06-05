@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- INSERT SCRIPT TAGS -->
+  <script src="https://unpkg.com/react@15.5.4/dist/react.js"></script>
+  <script src="https://unpkg.com/react-dom@15.5.4/dist/react-dom.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+  <!-- INSERT LINK TAG TO CSS FILE -->
+  <link rel="stylesheet" href="main3.css">
+  <title>React Styling</title>
+</head>
+<body>
+  <div id="app">React Not Yet Rendered</div>
+
+    <script type="text/babel">
+
+    // CREATE AND RENDER A COMPONENT
+    // class HelloWorld extends React.Component {
+    //   render() {
+    //     return(
+    //       // STYLE IN CSS FILE
+    //       // USE className instead of class
+    //       <h1 className="hello">Hello World</h1>
+    //     );
+    //   }
+    // }
+
+    class HelloWorld extends React.Component {
+      render() {
+        var helloStyle = {
+          // remove px and replace semi colons with commas
+          height: 300,
+          width: 300,
+          // camel case property names
+          // put text in strings
+          backgroundColor: "tomato"
+        }
+        return(
+          // STYLE CSS in component
+          // USE style as attribute
+          // Assign style an object
+          <h1 style={helloStyle}>Hello World</h1>
+        );
+      }
+    }
+
+    ReactDOM.render(
+      <HelloWorld/>,
+      document.getElementById("app")
+    );
+    </script>
+
+</body>
+</html>

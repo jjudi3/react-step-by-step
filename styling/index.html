@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- BRING IN SCRIPT TAGS FOR REACT, REACTDOM and BABEL -->
+  <script src="https://unpkg.com/react@15.5.4/dist/react.js"></script>
+  <script src="https://unpkg.com/react-dom@15.5.4/dist/react-dom.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+  <link rel="stylesheet" href="main.css">
+  <title>React Styling</title>
+</head>
+<body>
+  <!-- BRING IN REACT INTO THE DOM  -->
+  <div id="app">React Not Yet Rendered</div>
+  <script type="text/babel">
+
+    // class HelloWorld extends React.Component {
+    //   render() {
+    //     return (
+    //       <h1 className="header">React Rendering</h1>
+    //     );
+    //   }
+    // }
+
+    class HelloWorld extends React.Component {
+      render() {
+        PLACE VARIABLE WITHIN RENDER METHOD
+        var headerStyle = {
+          // NO PIXELS NEEDED
+          // REPLACE SEMI COLON WITH COMMA AS YOU WOULD WITH OBJECTS
+          // PLACE TEXT IN STRING QUOTES
+          height: 300,
+          width: 300,
+          // replace hyphen with camelCase properties
+          backgroundColor: "tomato"
+        }
+        return (
+          <h1 style={headerStyle}>React Rendering</h1>
+        );
+      }
+    }
+
+    ReactDOM.render(
+    <HelloWorld/>,
+    document.getElementById("app")
+    );
+</script>
+</body>
+</html>

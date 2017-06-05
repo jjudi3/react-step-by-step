@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://unpkg.com/react@15.5.4/dist/react.js"></script>
+  <script src="https://unpkg.com/react-dom@15.5.4/dist/react-dom.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+  <!-- CSS STYLING FILE -->
+  <link rel="stylesheet" href="main2.css">
+  <title>React Styling</title>
+</head>
+<body>
+  <div id="app">
+    <script type="text/babel">
+      // CREATE FIRST COMPONENT
+      // class HelloWorld extends React.Component {
+      //   render() {
+      //     return(
+      //       // STYLE WITH CSS FILE - use "className"
+      //       <h1 className="hello">Hello World</h1>
+      //     );
+      //   }
+      // }
+
+      class HelloWorld extends React.Component {
+        render() {
+          var headerStyle = {
+            // REMOVE PX
+            // REPLACE SEMI COLONS WITH COMMAS AS YOU WOULD WITH AN OBJECT
+            height: 300,
+            width: 300,
+            // REPLACE HYPHEN AND REPLACE WITH CAMELCASE
+            backgroundColor: "tomato"
+          }
+          return(
+            // STYLE within component
+            // USE STYLE ATTRIBUTE/PROPERTY
+            // USE OPENING AND CLOSING CURLY BRACES TO INTERPRET JAVASCRIPT OBJECT
+            <h1 style={headerStyle}>Hello World</h1>
+          );
+        }
+      }
+
+  ReactDOM.render(
+    <HelloWorld/>,
+    document.getElementById("app")
+  );
+
+    </script>
+  </div>
+</body>
+</html>
