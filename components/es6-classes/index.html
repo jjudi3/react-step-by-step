@@ -1,0 +1,45 @@
+<!-- emmet html:5 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- SET UP DEVELOPER ENVIRONMENT -->
+  <script src="https://unpkg.com/react@15.5.4/dist/react.js"></script>
+  <script src="https://unpkg.com/react-dom@15.5.4/dist/react-dom.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+  <!-- Title Lesson -->
+  <title>ES6 Class Component</title>
+</head>
+<body>
+  <div id="app">React Not Yet Rendered</div>
+
+  <script type="text/babel">
+
+    class StarbucksCoffee extends React.Component {
+      render() {
+        return (
+          <h1>I am drinking a grande Pike with no room</h1>
+          <h1>`I'm drinking a grande Pike with no room`</h1>
+          <h1>{`I'm drinking a grande Pike with no room`}</h1>
+        );
+      }
+    }
+
+    // Mastery Assignment
+    // Create 3 more components with es6 classes
+    // Provide an h2 tag with the content
+    // Provide a p tag with the content
+    // Provide a h1 tag with the content
+    
+
+    ReactDOM.render(
+      <StarbucksCoffee/>,
+      document.getElementById("app")
+    );
+
+  </script>
+
+</body>
+</html>
