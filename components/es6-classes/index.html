@@ -20,9 +20,11 @@
     class StarbucksCoffee extends React.Component {
       render() {
         return (
-          <h1>I am drinking a grande Pike with no room</h1>
-          <h1>`I'm drinking a grande Pike with no room`</h1>
-          <h1>{`I'm drinking a grande Pike with no room`}</h1>
+          <div>
+            <h1>I am drinking a grande Pike with no room</h1>
+            <h1>`I'm drinking a grande Pike with no room`</h1>
+            <h1>{`I'm drinking a grande Pike with no room`}</h1>
+          </div>
         );
       }
     }
@@ -32,10 +34,37 @@
     // Provide an h2 tag with the content
     // Provide a p tag with the content
     // Provide a h1 tag with the content
-    
+
+    class WeatherToday extends React.Component {
+      render() {
+        return (
+            <h1>The Weather Outside is Frightful</h1>
+        );
+      }
+    }
+
+    class ChanceOfRain extends React.Component {
+      render() {
+        return(
+          <h1>The chance of rain today is 45%</h1>
+        );
+      }
+    }
+
+    class Space extends React.Component {
+      render() {
+        return(
+          <div>
+            <WeatherToday/>
+            <ChanceOfRain/>
+            <StarbucksCoffee/>
+          </div>
+        );
+      }
+    }
 
     ReactDOM.render(
-      <StarbucksCoffee/>,
+      <Space/>,
       document.getElementById("app")
     );
 
