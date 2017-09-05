@@ -1,0 +1,92 @@
+<!-- INSERT BOILER PLATE CODE -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- REACT LIBRARY -->
+  <script src="https://unpkg.com/react@15.5.4/dist/react.js"></script>
+  <!-- REACT DOM LIBRARY -->
+  <script src="https://unpkg.com/react-dom@15.5.4/dist/react-dom.js"></script>
+  <!-- BABEL LIBRARY -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.25.0/babel.min.js"></script>
+  <title>onclick Events example</title>
+</head>
+<body>
+
+  <!-- DESIGNATED LOCATION TO INSERT REACT CONTENT  -->
+  <div id="app">React has not rendered yet</div>
+
+  <!-- JAVASCRIPT -->
+  <script type="text/babel">
+
+    // You  can create component iwth React that either do or don't have a backing instance. A "backing instance" is something that React uses
+    // to manage and persist state for a component over time. Components created from javaScript classes that extend React.Component get a bakcing
+    // instance created and managed by React.
+
+    class GuessAge extends React.Component {
+      // constructor() is a special funciton in a JavaScript class. JavaScript invokes constructor() whenever an object is created via a class.
+      //  React invokes constructor() first thing when initializing our component. React invokes constructor() with the component's props and context
+      // With ES6 classes we can set this.state directly here int he constructor. This is the ONLY time we will use this.state in the lifetime of our component
+      // to modify in the future we will youse this.setState() to modify the state.
+      constructor(props) {
+        // {/* Provide an initial state for our componet so that attempts to access it in render() don't return undefined values and throw errors
+        // // we invoke super() at the top of the constructor(). This invokes the constructor() function defined by React.Component which exectutes some
+        // // necessary setup code for our component. It's important to call super() whenever we define a constructor() function.
+        // // if a component doesn't use props or context, it's ok to not pass those along.
+        // */}
+        super(props);
+
+        this.state = {
+          age: 'Guess My Age'
+        };
+        // {/* bind component methods to component instance} */}
+        // {/* Because components create with classes don't "auto bind" component methods, we need to bind them to "this" in the constructor */}
+        this.onButtonClick = this.onButtonClick.bind(this);
+      }
+      // {/*}// inside both render() and constructor(), we've witnessed this is always ound to the component. But inside our custom component method
+      // // onButtonClick() this is acutally null (show in tutorial what happens when we don't give "this" context)
+      // // in JavaScript, the special "this" variable has a different binding depending on the context. For instance, inside render() we that "this" is "bound" to the component.
+      // // Put another way, "this" "references" the component.
+      // // Understanding the bind of this is one of the trickiest parts of learning JavaScript programming. Given this, it's fine for a beginning programmer to not
+      // // understand the nuances at first. */}
+      //
+      // {/* In short, we want this inside onButtonClick() to reference the component, just like it does inside render(). But why does this inside render()
+      //   and constructor() reference the component while this inside toggleChecked() does not? For the functions that are part of the standard React
+      //   component API like render(), React binds this to the component for us. Indeed, this is why we had no issues when using createClass to define
+      //   our component. When using createClass, React binds every method to the component. That's one of the biggest differences between createClass
+      //   components and ES6 class components: ANY TIME we define our own custom component methods for an ES6 class component, we have to manually bind
+      //   this to the component ourselves. */}
+      //   {/* assign event handler to handle changes to the button */}
+      onButtonClick() {
+        {/* this is the special API React provides to us for modifying component state */}
+        console.log(this);
+        this.setState({
+          age: '37'
+        });
+      }
+
+      render() {
+        return(
+          <div>
+            {/* this.state.age will grab value from this.state in the constructor method */}
+            <h1>Guessing Game</h1>
+            <h2>{this.state.age}</h2>
+            {/* Bind our age-revealing function to the click event emittedy by the button */}
+            <button onClick={this.onButtonClick}>reveal my age</button>
+          </div>
+        );
+      }
+    }
+
+
+    ReactDOM.render(
+      <GuessAge/>,
+      document.getElementById("app")
+    );
+
+  </script>
+
+</body>
+</html>

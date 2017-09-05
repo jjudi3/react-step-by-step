@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://unpkg.com/react@15.5.4/dist/react.js"></script>
+  <script src="https://unpkg.com/react-dom@15.5.4/dist/react-dom.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+  <script src="js/MyApp.js"></script>
+</head>
+<body>
+  <div id="app">React Not Yet Rendered</div>
+
+  <script type="text/babel">
+
+  class DinnerVote extends React.Component {
+    // this is done above Render. Why?
+    // added constructor and props - why?
+    constructor() { // why the props in here? Is this necessary.
+      super();
+      this.state = {
+        votes: 0
+      };
+      // add this section after this.setState is put on add method
+      this.add = this.add.bind(this); // why this here? is there another way?
+      this.subtract = this.subtract.bind(this); // why this here? is there another way?
+    }
+
+    add() {
+      this.setState({
+        votes: this.state.votes + 1
+      });
+    }
+    // subtract() {
+    //   alert("I do not want this!")
+    // }
+    subtract() {
+      this.setState({
+        votes: this.state.votes - 1
+      })
+    }
+    render() {
+      var dinnerVoteStyle = {
+        // from Friendly
+        display: "inline-block",
+        textAlign: "center",
+        margin: 20,
+        height: 500,
+        width: 300,
+        padding: 0,
+        backgroundColor: "#FFF",
+        WebkitFilter: "drop-shadow(0px 0px 5px #555)",
+        filter: "drop-shadow(0px 0px 5px #555)"
+      }
+      var foodStyle = {
+        height: 200,
+        width: 200,
+        marginTop: 20
+      }
+      // eve porcello onclick
+      return(
+        <div style={dinnerVoteStyle}>
+          <img src={this.props.img} alt="food image" style={foodStyle}/>
+          <h1>Dinner Time</h1>
+          <p>Vote Here If You Want This</p>
+          <button onClick={this.add}>+1</button>
+          <p>Vote Here If You Do Not Want This</p>
+          <button onClick={this.subtract}>-1</button>
+          <p>Total: {this.state.votes}</p>
+        </div>
+
+      );
+    }
+  }
+
+    // IF LINKS ARE BROKEN USE UPDATE LINKS FROM PEXELS.COM OR ANOTHER LINK OF YOUR CHOICE
+
+    // do I add multiple components?
+    ReactDOM.render(
+      <div>
+        <DinnerVote img="https://static.pexels.com/photos/46239/salmon-dish-food-meal-46239.jpeg"/>
+        <DinnerVote img="https://static.pexels.com/photos/58722/pexels-photo-58722.jpeg"/>
+        <DinnerVote img="https://static.pexels.com/photos/46239/salmon-dish-food-meal-46239.jpeg"/>
+      </div>,
+      document.getElementById("app")
+    );
+  </script>
+</body>
+</html>

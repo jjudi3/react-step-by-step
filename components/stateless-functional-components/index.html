@@ -1,0 +1,58 @@
+<!-- STEP ONE CREATE BOILER PLATE CODE -->
+<!-- STEP TWO PUT IN TAGS -->
+<!-- STEP THREE GIVE IT A TITLE -->
+<!-- STEP FOUR SETUP ID = APP -->
+<!-- STEP FIVE SET UP SCRIPT TAG -->
+<!-- STEP SIX SET UP REACT.RENDERMEDHOT (WHAT, WHERE) -->
+<!-- STEP SEVEN CREATE STATELESS FUNCTIONAL COMPONENT -->
+<!-- STEP EIGHT RENDER IT TO THE DOM -->
+
+<!-- emmet html:5 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- SET UP DEVELOPER ENVIRONMENT -->
+  <script src="https://unpkg.com/react@15.5.4/dist/react.js"></script>
+  <script src="https://unpkg.com/react-dom@15.5.4/dist/react-dom.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+  <!-- Title Lesson -->
+  <title>Stateless Functional Components</title>
+</head>
+<body>
+  <div id="app">React Not Yet Rendered</div>
+
+  <script type="text/babel">
+
+    // Setup Developer Environemnt
+
+    // Stateless, Functional Component
+    // When state is not going to be an issue
+    // Components are Capitalized vs dom elements are lowercase eg. div, h1, etc...
+    // store in a variable
+    // components are functions
+    // set equal to the keyword function. Right now we won't pass any arguments to it. Then we'll
+    // open and close a code block
+    // return statement...open and closing parenthesis. The closing semi-colon is optional. I'll
+    // use it everywhere to be consistant with my code
+    // this is where we'll insert our JSX
+
+    var ColorSpectrum = function() {
+      return(
+        <h1>Red, Orange, Yellow, Green, Blue, Indigo, Violet</h1>
+      );
+    }
+
+    ReactDOM.render(
+      // Here is a quick difference. We'll pass in our variable name as before and then we'll make
+      // it a closing tag
+      <ColorSpectrum/>,
+      document.getElementById("app")
+    );
+
+  </script>
+
+</body>
+</html>

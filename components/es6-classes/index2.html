@@ -46,31 +46,39 @@
     class Circle extends React.Component {
       render() {
         return (
-            <h1>Drip Coffee</h1>
+            <h1 id="circle">Circle</h1>
         );
       }
     }
 
-    class Americano extends React.Component {
+    class Square extends React.Component {
       render() {
         return (
-            <h1>American</h1>
+            <h1 id="square">Square</h1>
         );
       }
     }
 
-    class Frappachino extends React.Component {
+    class Rectangle extends React.Component {
       render() {
         return (
-            <h1>Frappachino</h1>
+            <h1 id="rectangle">Rectangle</h1>
         );
       }
     }
 
-    class Mocha extends React.Component {
+    class Triangle extends React.Component {
       render() {
         return (
-            <h1>Mocha </h1>
+            <h1 id="triangle">Triangle</h1>
+        );
+      }
+    }
+
+    class PacMan extends React.Component {
+      render() {
+        return (
+            <h1 id="pacman">PacMan</h1>
         );
       }
     }
@@ -78,10 +86,11 @@
 
     ReactDOM.render(
       <div>
-        <DripCoffee/>
-        <Americano/>
-        <Frappachino/>
-        <Mocha/>
+        <Circle/>
+        <Square/>
+        <Rectangle/>
+        <Triangle/>
+        <PacMan/>
       </div>,
       document.getElementById("app")
     );

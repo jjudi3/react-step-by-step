@@ -1,0 +1,113 @@
+<!-- NORMAL CSS APPROACH -->
+<!-- emmet html:5 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- SET UP DEVELOPER ENVIRONMENT -->
+  <script src="https://unpkg.com/react@15.5.4/dist/react.js"></script>
+  <script src="https://unpkg.com/react-dom@15.5.4/dist/react-dom.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+  <link rel="stylesheet" href="main.css">
+  <!-- Title Lesson -->
+  <title>Stateless Functional Components</title>
+</head>
+<body>
+  <div id="app">React Not Yet Rendered</div>
+
+  <script type="text/babel">
+
+    // Stateless, Functional Component
+    // When state is not going to be an issue
+    // Components are Capitalized vs dom elements are lowercase eg. div, h1, etc...
+    // store in a variable
+    // components are functions
+    // set equal to the keyword function. Right now we won't pass any arguments to it. Then we'll
+    // open and close a code block
+    // return statement...open and closing parenthesis.
+    // this is where we'll insert our JSX
+
+    // var ColorSpectrum = function() {
+    //   return(
+    //     // <h1>Red, Orange, Yellow, Green, Blue, Indigo, Violet</h1>
+    //   );
+    // }
+
+    // Challenge
+    // Create a component for each of ROY G BIV
+    // Use an h1 tag to render to the DOM "I am the color ______"
+    // Render all those components to the DOM. Remember to put them within one element
+    // This will be incredibly repetative. This should get you to the point that you
+    // can type this blind folded.
+
+    var Red = function() {
+      return(
+        <h1 id="red">Red</h1>
+      );
+    }
+
+    var Orange = function() {
+      return(
+        <h1 id="orange">Orange</h1>
+      );
+    }
+
+    var Yellow = function() {
+      return(
+        <h1 id="yellow">Yellow</h1>
+      );
+    }
+
+    var Green = function() {
+      return(
+        <h1 id="green">Green</h1>
+      );
+    }
+
+    var Blue = function() {
+      return(
+        <h1 id="blue">Blue</h1>
+      );
+    }
+
+    var Indigo = function() {
+      return(
+        <h1 id="indigo">Indigo</h1>
+      );
+    }
+
+
+    var Violet = function() {
+      return(
+        <h1 id="violet">Violet</h1>
+      );
+    }
+
+
+    ReactDOM.render(
+      // Here is a quick difference. We'll pass in our variable name as before and then we'll make
+      // it a closing tag
+      // Now, we'll go ahead and place all of our components in here. Now, we know from previous lessons
+      // that if we don't put these within a parent element that React, because of the way it
+      // interprets the JSX that Babel converts to JavaScript won't render this to the DOM
+      // that's it. Easy.
+      // You now know how to make stateless functional components. Remember, the rule of thum...
+      // make stateless functional components unless something else is called for :)
+      <div>
+        <Red/>
+        <Orange/>
+        <Yellow/>
+        <Green/>
+        <Blue/>
+        <Indigo/>
+        <Violet/>
+      </div>,
+      document.getElementById("app")
+    );
+
+  </script>
+
+</body>
+</html>

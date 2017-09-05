@@ -1,0 +1,72 @@
+<!-- INSERT BOILER PLATE CODE -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- REACT LIBRARY -->
+  <script src="https://unpkg.com/react@15.5.4/dist/react.js"></script>
+  <!-- REACT DOM LIBRARY -->
+  <script src="https://unpkg.com/react-dom@15.5.4/dist/react-dom.js"></script>
+  <!-- BABEL LIBRARY -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.25.0/babel.min.js"></script>
+  <title>onclick Events example</title>
+</head>
+<body>
+
+  <!-- DESIGNATED LOCATION TO INSERT REACT CONTENT  -->
+  <div id="app">React has not rendered yet</div>
+
+  <!-- JAVASCRIPT -->
+  <script type="text/babel">
+
+    class Note extends React.Component {
+
+      editNote() {
+        alert("this function will edit note");
+      }
+      deleteNote() {
+        alert("this function will delete note");
+      }
+      render() {
+        console.log(this);
+        return(
+          // the onclick attribute is added to the target element in order
+          // to specify the function to be executed when that element is clicked
+          // This isn't just limited to button, you can add the onclick attribute on any element or custom componentDidMount
+          //
+          <div>
+          // learning React Events...before looking at State...start to use the "this" keyword
+          //
+            <h1>Useless Note Taker</h1>
+            // the way we are going to attache these methods to the DOM elements is with the onClick property to each button
+            // onClick will be set to a curley braces because we are in JSX and we want to use the javaScript functions'
+            // 
+            <button onClick={this.editNote}>edit note</button>
+            <button onClick={this.deleteNote}>delete note</button>
+          </div>
+        );
+      }
+    }
+
+  // function ShowAlert2 () {
+  //   showAlert() {
+  //     alert("I am a second alert")
+  //   },
+  //   return(
+  //     <button onClick={this.showAlert}>show alert 2</button>
+  //   )
+  // }
+
+
+
+    ReactDOM.render(
+        <Note/>,
+      document.getElementById("app")
+    );
+
+  </script>
+
+</body>
+</html>

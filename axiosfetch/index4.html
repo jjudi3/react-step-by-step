@@ -1,0 +1,66 @@
+<!-- https://daveceddia.com/ajax-requests-in-react/ -->
+<!-- do this but with the swapi or starwars api? -->
+<!-- INSERT BOILER PLATE CODE -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- REACT LIBRARY -->
+  <script src="https://unpkg.com/react@15.5.4/dist/react.js"></script>
+  <!-- REACT DOM LIBRARY -->
+  <script src="https://unpkg.com/react-dom@15.5.4/dist/react-dom.js"></script>
+  <!-- BABEL LIBRARY -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.25.0/babel.min.js"></script>
+  <!-- AXIO LIBRARY -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.16.2/axios.js"></script>
+  <title>Boiler Plate Code</title>
+</head>
+<body>
+
+  <!-- DESIGNATED LOCATION TO INSERT REACT CONTENT  -->
+  <div id="root">React has not rendered yet</div>
+
+  <!-- JAVASCRIPT -->
+  <script type="text/babel">
+
+  class FetchDemo extends React.Component {
+constructor(props) {
+  super(props);
+
+  this.state = {
+    posts: []
+  };
+}
+
+componentDidMount() {
+  axios.get(`http://www.reddit.com/r/${this.props.subreddit}.json`)
+    .then(res => {
+      const posts = res.data.data.children.map(obj => obj.data);
+      this.setState({ posts });
+    });
+}
+
+render() {
+  return (
+    <div>
+      <h1>{`/r/${this.props.subreddit}`}</h1>
+      <ul>
+        {this.state.posts.map(post =>
+          <li key={post.id}>{post.title}</li>
+        )}
+      </ul>
+    </div>
+  );
+}
+}
+
+ReactDOM.render(
+<FetchDemo subreddit="reactjs"/>,
+document.getElementById('root')
+);
+  </script>
+
+</body>
+</html>

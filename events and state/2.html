@@ -1,0 +1,71 @@
+<!-- INSERT BOILER PLATE CODE -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- REACT LIBRARY -->
+  <script src="https://unpkg.com/react@15.5.4/dist/react.js"></script>
+  <!-- REACT DOM LIBRARY -->
+  <script src="https://unpkg.com/react-dom@15.5.4/dist/react-dom.js"></script>
+  <!-- BABEL LIBRARY -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.25.0/babel.min.js"></script>
+  <title>Boiler Plate Code</title>
+</head>
+<body>
+
+  <!-- DESIGNATED LOCATION TO INSERT REACT CONTENT  -->
+  <div id="app">React has not rendered yet</div>
+
+  <!-- JAVASCRIPT -->
+  <script type="text/babel">
+
+    class ChangeInput extends React.Component {
+
+      constructor(props) {
+        super(props);
+        this.state = {
+          name: ''
+        };
+      }
+
+    changeText(event) {
+      this.setState({
+        name: event.target.value
+      });
+    }
+
+    render() {
+      return(
+        <div>
+          <label htmlFor="name">What is your name: </label>
+          console.log(this);
+          {/* }// onChange...any time text is added we run ChangeText function
+          // we hav eto use bind and this to have the correct context
+          // onChange can only be added to input element with type
+          // text, textarea and select
+          // value is held in target.value
+          // the event object gets passed as an argument to the function that yo passed in to
+          // the onChange attribute.
+          // in order to update the contents of the h3 element, we update the components
+          // state with the current value of the text field */}
+          <input type="text" id="name" onChange={this.changeText.bind(this)} />
+          console.log(this)
+          <h3>{ this.state.name}</h3>
+        </div>
+      );
+    }
+
+    }
+
+
+    ReactDOM.render(
+      <ChangeInput/>,
+      document.getElementById("app")
+    );
+
+  </script>
+
+</body>
+</html>

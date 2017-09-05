@@ -11,7 +11,7 @@
   <script src="https://unpkg.com/react-dom@15.5.4/dist/react-dom.js"></script>
   <!-- BABEL LIBRARY -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.25.0/babel.min.js"></script>
-  <title>Let's React!</title>
+  <title>Boiler Plate Code</title>
 </head>
 <body>
 
@@ -21,11 +21,27 @@
   <!-- JAVASCRIPT -->
   <script type="text/babel">
 
-    // RENDER REACT TO THE DOM - WILL ACCEPT TWO ARGUMENTS (REACT WHAT, REACT WHERE)
+    class Note extends React.Component {
+      handleButtonEdit() {
+        alert("this function will edit a note");
+      }
+      handleButtonDelete() {
+        alert("this function will delete a note")
+      }
+      render() {
+        console.log(this);
+        return(
+          <div>
+            <h1>Useless Note Taker</h1>
+            <button onClick={this.handleButtonEdit}>edit note</button>
+            <button onClick={this.handleButtonDelete}>delete note</button>
+          </div>
+        );
+      }
+    }
+
     ReactDOM.render(
-      // REACT WHAT - JSX
-      <h1>Hello World</h1>,
-      // REACT WHERE - DIV WITH ID OF "APP"
+      <Note/>,
       document.getElementById("app")
     );
 

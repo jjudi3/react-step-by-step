@@ -1,0 +1,215 @@
+<!-- https://reacttraining.com/react-router/web/example/basic -->
+<!-- tree house data fetching with React -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <script src="https://unpkg.com/react@15.3.2/dist/react.js"></script>
+  <script src="https://unpkg.com/react-dom@15.3.2/dist/react-dom.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+  <script src="https://npmcdn.com/react-router@2.4.0/umd/ReactRouter.min.js"></script>
+  <link rel="stylesheet" href="main.css">
+  <style>
+
+  </style>
+</head>
+
+<body>
+
+  <div id="container">
+
+  </div>
+
+  <script type="text/babel">
+
+    // this will allow us not to have to retype ReactRouter over and over again
+    var { Router, Route, IndexRoute, IndexLink, hashHistory, Link } = ReactRouter;
+    // Router -
+    // Route -
+    // IndexLink -
+    // hashHistory -
+    // Link -
+
+    var destination = document.querySelector("#container");
+
+    // var Contact = React.createClass({
+    //   render: function() {
+    //     return(
+    //       <div>
+    //         <h2>Got Questions?!!</h2>
+    //         <p>email me at robgmerrill@gmail.com</p>
+    //       </div>
+    //     );
+    //   }
+    // });
+
+    class Planets extends React.Component {
+      // constructor initializes state inside the Planets class
+      constructor() {
+        // super lets us use the keyword "this" within the App class
+        // and not the parent Component class
+        super();
+        // set equal to object. a collection of objects that will
+        this.state = {items: []}
+      }
+      filter(e) {
+        this.setState({ filter: e.target.value })
+      }
+      // rendered to the DOM.
+      // At this point in the life cycle
+      componentWillMount() {
+        // fetch provides a way to make web req in the browser and set response methods
+        fetch ('http://swapi.co/api/planets/')
+        // pokemon api to get pokemon
+        // fetch('http://pokeapi.co/api/v2/pokemon')
+          .then (response => response.json() )
+          // this goes to the results property from our returned data
+          .then( ({ results: items }) => this.setState({ items }))
+      }
+      render() {
+        console.log(this.state.items)
+        let items = this.state.items;
+        if(this.state.filter) {
+          items = items.filter( item =>
+          item.name.toLowerCase()
+            .includes(this.state.filter.toLowerCase()))
+        }
+          return (
+            <div>
+              <input type="text"
+              onChange={this.filter.bind(this)}/>
+              {items.map(item => <h4>Planet: {item.name} The Temp is: {item.climate}</h4> )}
+            </div>
+          );
+      }
+    }
+
+    class People extends React.Component {
+      constructor() {
+        super();
+        this.state = {items: []}
+      }
+      componentWillMount() {
+        fetch ('http://swapi.co/api/people/?format=json')
+          .then (response => response.json() )
+          .then( ({ results: items }) => this.setState({ items }))
+      }
+
+      filter(e) {
+        this.setState({ filter: e.target.value })
+      }
+
+      render() {
+        let items = this.state.items
+        if(this.state.filter) {
+          items = items.filter( item =>
+          item.name.toLowerCase()
+            .includes(this.state.filter.toLowerCase()))
+        }
+          return (
+            <div>
+              <input type="text"
+              onChange={this.filter.bind(this)}/>
+              {items.map(item => <h4 key={item.name}>{item.name}</h4> )}
+            </div>
+          );
+      }
+    }
+
+    // class People extends React.Component {
+    //   constructor() {
+    //     super();
+    //     this.state = {items: []}
+    //   }
+    //   componentWillMount() {
+    //     fetch ('http://swapi.co/api/people/?format=json')
+    //       .then (response => response.json() )
+    //       .then( responseData => {
+    //         this.setState({ results: items });
+    //       } )
+    //   }
+    //   render() {
+    //     let items = this.state.items
+    //       return (
+    //         <div>
+    //           {items.map(item => <h4>{item.name}</h4> )}
+    //         </div>
+    //       );
+    //   }
+    // }
+
+    // class People extends React.Component {
+    //   constructor() {
+    //     super();
+    //     this.state = {items: []}
+    //   }
+    //   componentWillMount() {
+    //     fetch ('http://swapi.co/api/people/?format=json')
+    //       .then( function (response) {
+    //         response.json()
+    //       })
+    //       .then function (responseData) {
+    //         this.setState({ results: items })
+    //       }
+    //   }
+    //   render() {
+    //     let items = this.state.items
+    //       return (
+    //         <div>
+    //           {items.map(item => <h4>{item.name}</h4> )}
+    //         </div>
+    //       );
+    //   }
+    // }
+
+
+    class Home extends React.Component {
+      render() {
+        return(
+          <div>
+            <h2>HELLO</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat, ipsum odio impedit est ipsam, eius quidem accusamus magni corporis et alias rerum repellat ex fuga reiciendis ut dolorum saepe consequuntur.</p>
+          </div>
+        );
+      }
+    }
+
+    class App extends React.Component {
+      render() {
+        return(
+          <div>
+            <h1>Starwars Universe</h1>
+            <ul className="header">
+              <li><IndexLink to="/" activeClassName="active">Home</IndexLink></li>
+              <li><Link to="/people" activeClassName="active">People</Link></li>
+              <li><Link to="/planets" activeClassName="active">Planets</Link></li>
+            </ul>
+            <div className="content">
+              {this.props.children}
+            </div>
+          </div>
+        );
+      }
+    }
+
+
+
+
+    ReactDOM.render(
+      <Router history={ReactRouter.hashHistory}>
+        <Route path="/" component={App}>
+
+          <IndexRoute component={Home}/>
+          <Route path="planets" component={Planets} />
+          <Route path="people" component={People} />
+
+        </Route>
+      </Router>
+      ,
+      destination
+    );
+  </script>
+</body>
+
+</html>

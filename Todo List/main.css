@@ -1,0 +1,31 @@
+.todoListMain {
+  display: flex;
+  justify-content: center;
+
+}
+
+.todoListMain .header {
+  background-color: lightblue;
+  height: auto;
+  width: 300px;
+}
+
+.todoListMain .header input {
+
+}
+
+.todoListMain .header button {
+
+}
+
+.todoListMain .header button:hover {
+
+}
+
+.todoListMain .theList {
+
+}
+
+.todoListMain .theList li {
+  
+}

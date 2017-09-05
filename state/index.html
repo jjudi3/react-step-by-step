@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>React! React! React!</title>
+  <script src="https://fb.me/react-0.14.7.js"></script>
+  <script src="https://fb.me/react-dom-0.14.7.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+</head>
+
+<body>
+  <div id="app"></div>
+  <script type="text/babel">
+
+    // start off with stateless and change to class component
+
+    class LightningCounter extends React.Component {
+      // added constructor and props - why?
+      constructor(props) { // why the props in here? Is this necessary.
+        super(props);
+        // no getInitialState for old way of creating component?
+        this.state = {
+          strikes: 0
+        };
+        // this keyword needed to find functions in class comonents
+        // http://www.tamas.io/react-with-es6/
+        // Component LifeCycle Method https://engineering.musefind.com/react-lifecycle-methods-how-and-when-to-use-them-2111a1b692b1
+        this.timerTick = this.timerTick.bind(this); // why this here? is there another way?
+      }
+      // getInitialState() {
+      //   return {
+      //     strikes: 0
+      //   };
+      // }
+      timerTick() {
+        this.setState({
+          strikes: this.state.strikes + 100
+        });
+      }
+      componentDidMount() {
+        setInterval(this.timerTick, 1000);
+      }
+      render() {
+        return (
+          <h1>{this.state.strikes}</h1>
+        );
+      }
+    }
+
+    // var LightningCounter = function() {
+    //   getInitialState: function() {
+    //     return {
+    //       strikes: 0
+    //     };
+    //   },
+    //   return (
+    //     <h1>{this.state.strikes}</h1>
+    //   );
+    // }
+
+    var LightningCounterDisplay = function() {
+      var divStyle = {
+        width: 250,
+        textAlign: "center",
+        backgroundColor: "black",
+        padding: 40,
+        fontFamily: "sans-serif",
+        color: "#999",
+        borderRadius: 10
+      };
+
+      return(
+        <div style={divStyle}>
+          <LightningCounter/>
+        </div>
+      );
+    }
+
+
+
+
+    ReactDOM.render(
+      <LightningCounterDisplay/>,
+      document.getElementById("app")
+    );
+  </script>
+</body>
+
+</html>

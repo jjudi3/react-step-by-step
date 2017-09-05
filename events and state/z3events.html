@@ -1,0 +1,64 @@
+<!-- INSERT BOILER PLATE CODE -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- REACT LIBRARY -->
+  <script src="https://unpkg.com/react@15.5.4/dist/react.js"></script>
+  <!-- REACT DOM LIBRARY -->
+  <script src="https://unpkg.com/react-dom@15.5.4/dist/react-dom.js"></script>
+  <!-- BABEL LIBRARY -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.25.0/babel.min.js"></script>
+  <title>onclick Events example</title>
+</head>
+<body>
+
+  <!-- DESIGNATED LOCATION TO INSERT REACT CONTENT  -->
+  <div id="app">React has not rendered yet</div>
+
+  <!-- JAVASCRIPT -->
+  <script type="text/babel">
+
+  // user moves mouse, clicks on element, types in input
+  // when user types we want to know that they typed and what they typed
+  // 1. declare event handler. An event handler is a function that should run when ever an event occurs.
+  // 2. pass the event handler to the element that we want to monitor for Events
+  // so lets look at a normal input element...what happens...the text is changing. We want to
+    // create an event handler to run a function everytime the text changes
+    //let's create that event handler...a method...onInputChnange
+    // naming convention "handle" or "on" then "element"  then name of the event itself
+    // after creating the event handler, pass it to the element you want to effect
+  // all HTML input elements emit a change event when a user interacts with them. JS thing.
+  // property onChange = { } then the name of the event handler.
+  // now, let's go back to the event handler. onInputChange
+  // pass to it an argument "(event)". Name anything :) event item describes the context or information that occurred.
+  // use event to get access to the value. Console log it. to get value event.target.value
+  // event handlers often called with event object to get more information about the event that just occurred.
+
+
+
+    class Search extends React.Component {
+      handleInputChange(event) {
+        console.log(event.target.value)
+      }
+      render() {
+        return(
+          <input onChange={this.handleInputChange}/>
+        );
+      }
+    }
+
+
+
+
+    ReactDOM.render(
+        <Search/>,
+      document.getElementById("app")
+    );
+
+  </script>
+
+</body>
+</html>

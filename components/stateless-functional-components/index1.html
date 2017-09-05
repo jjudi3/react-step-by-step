@@ -27,14 +27,10 @@
       // javascript objects
     // we'll then name
 
-    class Shapes extends React.Component {
-      render() {
-        return (
-          <div>
-            <h1>Circle, Square, Rectangle, Triangle, PacMan</h1>
-          </div>
-        );
-      }
+    var ColorSpectrum = function() {
+      return(
+        <h1>Red, Orange, Yellow, Green, Blue, Indigo, Violet</h1>
+      );
     }
 
     // Mastery Assignment
@@ -43,45 +39,66 @@
     // Provide a p tag with the content
     // Provide a h1 tag with the content
 
-    class Circle extends React.Component {
-      render() {
-        return (
-            <h1>Drip Coffee</h1>
-        );
-      }
+    var Red = function() {
+      return(
+        <h1>Red</h1>
+      );
     }
 
-    class Americano extends React.Component {
-      render() {
-        return (
-            <h1>American</h1>
-        );
-      }
+    var Orange = function() {
+      return(
+        <h1>Orange</h1>
+      );
     }
 
-    class Frappachino extends React.Component {
-      render() {
-        return (
-            <h1>Frappachino</h1>
-        );
-      }
+    var Yellow = function() {
+      return(
+        <h1>Yellow</h1>
+      );
     }
 
-    class Mocha extends React.Component {
-      render() {
-        return (
-            <h1>Mocha </h1>
-        );
-      }
+    var Green = function() {
+      return(
+        <h1>Green</h1>
+      );
     }
+
+    var Blue = function() {
+      return(
+        <h1>Blue</h1>
+      );
+    }
+
+    var Indigo = function() {
+      return(
+        <h1>Indigo</h1>
+      );
+    }
+
+    var Violet = function() {
+      return(
+        <h1>Violet</h1>
+      );
+    }
+
+    // class Mocha extends React.Component {
+    //   render() {
+    //     return (
+    //         <h1>Mocha </h1>
+    //     );
+    //   }
+    // }
 
 
     ReactDOM.render(
       <div>
-        <DripCoffee/>
-        <Americano/>
-        <Frappachino/>
-        <Mocha/>
+        <Red/>
+        <Orange/>
+        <Yellow/>
+        <Green/>
+        <Blue/>
+        <Indigo/>
+        <Violet/>
       </div>,
       document.getElementById("app")
     );

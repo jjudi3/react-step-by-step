@@ -1,0 +1,89 @@
+<!-- INSERT BOILER PLATE CODE -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- REACT LIBRARY -->
+  <script src="https://unpkg.com/react@15.5.4/dist/react.js"></script>
+  <!-- REACT DOM LIBRARY -->
+  <script src="https://unpkg.com/react-dom@15.5.4/dist/react-dom.js"></script>
+  <!-- BABEL LIBRARY -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.25.0/babel.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.16.2/axios.min.js"></script>
+  <title>Boiler Plate Code</title>
+</head>
+<body>
+
+  <!-- DESIGNATED LOCATION TO INSERT REACT CONTENT  -->
+  <div id="app">React has not rendered yet</div>
+
+  <!-- JAVASCRIPT -->
+  <script type="text/babel">
+
+    class App extends React.Component {
+      constructor() {
+        super();
+        this.state = {items: []}
+      }
+      // componentWillMount or componentDidMount - what is the difference
+      componentDidMount() {
+      //   fetch ('http://swapi.co/api/people/?format=json')
+      //     .then (response => response.json() )
+      //     .then( ({ results: items }) => this.setState({ items }))
+      // }
+
+      // fetch('http://swapi.co/api/people/')
+      // // the promise returned is everything in "response"...we then want to make sure that this json ready
+      // // after that has occurred we want to create a function
+      // // .then(response => response.json())
+      // .then(function(response) {
+      //   return response.json()
+      // })
+      // .then(responseData => {
+      //   this.setState({
+      //     // look at the starwars JSON in the browser to see that results is what we want
+      //     items: responseData.results
+      //   });
+      // })
+      //
+      // .catch(error => {
+      //   console.log('Error fetching and parsing data', error);
+      // });
+
+      axios.get('http://swapi.co/api/people/')
+        // axios does any JSON conversion that we need
+        .then(response => {
+          this.setState({
+            // note the data in the axios API
+            items: response.data.results
+          });
+        })
+        .catch(error => {
+          console.log('Error fetching and parsing data', error);
+        });
+}
+
+      render() {
+        let items = this.state.items
+          return (
+            <div>
+              {/*items.map(item => <h4>{item.name}</h4> )*/}
+              {items.map(function(item) {
+                return <h4 key={item.name}>{item.name}</h4>
+              })}
+            </div>
+          );
+      }
+    }
+
+    ReactDOM.render(
+    <App/>,
+    document.getElementById('app')
+    );
+
+  </script>
+
+</body>
+</html>

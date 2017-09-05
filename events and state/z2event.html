@@ -1,0 +1,67 @@
+<!-- INSERT BOILER PLATE CODE -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- REACT LIBRARY -->
+  <script src="https://unpkg.com/react@15.5.4/dist/react.js"></script>
+  <!-- REACT DOM LIBRARY -->
+  <script src="https://unpkg.com/react-dom@15.5.4/dist/react-dom.js"></script>
+  <!-- BABEL LIBRARY -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.25.0/babel.min.js"></script>
+  <title>onclick Events example</title>
+</head>
+<body>
+
+  <!-- DESIGNATED LOCATION TO INSERT REACT CONTENT  -->
+  <div id="app">React has not rendered yet</div>
+
+  <!-- JAVASCRIPT -->
+  <script type="text/babel">
+
+    class Warning extends React.Component {
+
+      handleButtonHot() {
+        alert("Ouch, that is hot!!");
+      }
+      handleButtonCold() {
+        alert("Brain freeze!!");
+      }
+      render() {
+        console.log(this);
+        return(
+          // the onclick attribute is added to the target element in order
+          // to specify the function to be executed when that element is clicked
+          // This isn't just limited to button, you can add the onclick attribute on any element or custom componentDidMount
+          //
+          <div>
+            <h1>Life Warnings</h1>
+            <button onMouseOver={this.handleButtonHot}>Touch Stove</button>
+            <button onMouseOver={this.handleButtonCold}>Drink Slurpee Really Fast</button>
+          </div>
+        );
+      }
+    }
+
+  // function ShowAlert2 () {
+  //   showAlert() {
+  //     alert("I am a second alert")
+  //   },
+  //   return(
+  //     <button onClick={this.showAlert}>show alert 2</button>
+  //   )
+  // }
+
+
+
+    ReactDOM.render(
+      <Warning/>,
+      document.getElementById("app")
+    );
+
+  </script>
+
+</body>
+</html>

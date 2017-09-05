@@ -1,0 +1,74 @@
+<!-- https://medium.com/@aghh1504/3-react-with-simple-api-7e32248aeea5 -->
+<!-- INSERT BOILER PLATE CODE -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- REACT LIBRARY -->
+  <script src="https://unpkg.com/react@15.5.4/dist/react.js"></script>
+  <!-- REACT DOM LIBRARY -->
+  <script src="https://unpkg.com/react-dom@15.5.4/dist/react-dom.js"></script>
+  <!-- BABEL LIBRARY -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.25.0/babel.min.js"></script>
+  <title>Boiler Plate Code</title>
+</head>
+<body>
+
+  <!-- DESIGNATED LOCATION TO INSERT REACT CONTENT  -->
+  <div id="app">React has not rendered yet</div>
+
+  <!-- JAVASCRIPT -->
+  <script type="text/babel">
+
+      class App extends React.Component {
+          constructor(props) {
+            super(props);
+            this.state = {
+              term: '',
+              img: ''
+            };
+          }
+
+          onChange = (event) => {
+            this.setState({ term: event.target.value });
+          }
+          handleSubmit = (event) => {
+            event.preventDefault();
+            const api_key = 'dc6zaTOxFJmzC';
+            const url = `http://api.giphy.com/v1/gifs/search?q=${this.state.term}&api_key=${api_key}`;
+            fetch(url)
+              .then(response => response.json())
+              .then(data => this.setState({ term: '', img: data.data[0].images.fixed_height.url }))
+              .catch(e => console.log('error', e));
+          }
+
+          render() {
+            return (
+              <div className="App">
+                <h1>Giphy Pics!</h1>
+                <form onSubmit={this.handleSubmit}>
+                  <input value={this.state.term} onChange={this.onChange} />
+                  <button>Search!</button>
+                </form>
+                <img src={this.state.img} height="200" alt={this.state.term} />
+              </div>
+            );
+          }
+          }
+
+    ReactDOM.render(
+    <App/>,
+    document.getElementById('app')
+    )
+
+    ReactDOM.render(
+      <App/>,
+      document.getElementById("app")
+    );
+
+  </script>
+
+</body>
+</html>
